@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Faisal's Portfolio | Home{% endblock %}
+{% block content %}
+<br><br><br>
+<div class="jumbotron border-bottom text-center">
+    <div class="container">
+        <img class=" border bg-white p1 border-light-gray circle square-100 lazyloaded"
+            src="{% static 'images/photo.jpg' %}"><br><br>
+        <div class="col-md">
+            <h4 style="font-size:1.9vw;" id="name">Mohamed Faisal</h4>
+            <h7 style="font-size:1.9vw" ;>python - django - developer</h7><br><br>
+        </div>
+        <a href="mailto:faisal.programmer369@gmail.com" type="button" class="btn btn-primary">Hire</a>
+    </div>
+</div>
+
+<hr>
+<h3 class="text-center">My Projects</h3>
+<hr>
+
+<div class="container">
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <img width="100%" height="300" src="{{ project.image.url }}" alt="project-image">
+                <div class="card-body">
+                    <h5>{{ project.title }}</h5>
+                    <p class="card-text">{{ project.summary|truncatechars:190 }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="{{ project.url }}" target="_blank"><button class="blue-button">View</button></a>
+                        </div>
+                        <small class="text-muted">Github : <a
+                                href="{{ project.github }}">{{ project.github|truncatechars:19 }}</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<br>
+<hr>
+
+<h3 class="text-center">Skills</h3>
+<hr><br>
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-content">
+            <div class="row">
+                <div class="col-2">
+                    <img height="58px" width="53px" src="{% static 'images/python.png'%}" alt="">
+                </div>
+                <div class="col-2">
+                    <img height="59px" width="56px" src="{% static 'images/django.jpg'%}" alt="">
+                </div>
+                <div class="col-2">
+                    <img height="52px" src="{% static 'images/html.png'%}" alt="">
+                </div>
+                <div class="col-2">
+                    <img height="52px" src="{% static 'images/css.png'%}" alt="">
+                </div>
+                <div class="col-2">
+                    <img height="47px" src="{% static 'images/boot.png'%}" alt="">
+                </div>
+                <div class="col-2">
+                    <img height="51px" width="49px" src="{% static 'images/hero.jpg'%}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
